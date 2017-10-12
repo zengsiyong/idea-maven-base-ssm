@@ -22,10 +22,18 @@ public class SysUserController {
 	// 这里为什么只能用resource 或 autowired ，如果括号内再加具体的名字就会报错
 	@Autowired
 	private SysUserService sysUserService;
-	
+
+	// zengsy测试
+	@Autowired
+	// private TestService testService;
+
+
 	@RequestMapping("/showUserToJspById/{userId}")
 	public String showUser(Model model,@PathVariable("userId") Long userId){
 		SysUser user = this.sysUserService.getById(userId);
+		// zengsy测试
+		// testService.addCategory("department1_name");
+
 		model.addAttribute("user", user);
 		return "showUser";
 	}
