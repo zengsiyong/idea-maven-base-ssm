@@ -24,6 +24,29 @@
 
 真实姓名：${user.sysUserRealName}
 
+<br>
+
+部门总数：${categoryTotal}
+部门名称：${category.name}
+
+<br>
+<select>
+    <c:forEach var="categoryName" items="${categoryList}">
+        <option>${categoryName.id}</option>
+    </c:forEach>
+</select>
+
+<br>
+使用List集合显示部门名称:
+<c:forEach var="categoryName" items="${categoryList}">
+
+    ${categoryName.name}
+    <br>
+   分割
+
+</c:forEach>
+
+
 </body>
 </html>
 

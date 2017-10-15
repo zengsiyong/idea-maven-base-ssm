@@ -13,8 +13,9 @@ import java.util.List;
  *
  */
 public class Category {
-    private String name;
     private int id;
+    private String name;
+
     List<Product> products;
     List<List<Product>> productsByRow;
 

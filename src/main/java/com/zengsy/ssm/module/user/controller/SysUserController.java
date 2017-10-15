@@ -1,7 +1,9 @@
 package com.zengsy.ssm.module.user.controller;
 
+import com.zengsy.ssm.module.user.pojo.Category;
 import com.zengsy.ssm.module.user.pojo.SysUser;
 import com.zengsy.ssm.module.user.service.SysUserService;
+import com.zengsy.ssm.module.user.service.TestService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("/sysUserController")
@@ -25,16 +28,26 @@ public class SysUserController {
 
 	// zengsy测试
 	@Autowired
-	// private TestService testService;
+	private TestService testService;
 
 
 	@RequestMapping("/showUserToJspById/{userId}")
 	public String showUser(Model model,@PathVariable("userId") Long userId){
 		SysUser user = this.sysUserService.getById(userId);
-		// zengsy测试
-		// testService.addCategory("department1_name");
 
+
+		// zengsy测试
+
+		testService.addCategory(new Category());
+		int categoryTotal = testService.getCategoryTotal();
+		Category category = this.testService.getCategoryById(userId.intValue());
 		model.addAttribute("user", user);
+		model.addAttribute("category", category);
+		model.addAttribute("categoryList", testService.listCategoryByLimit(0, 10));
+
+
+
+		model.addAttribute("categoryTotal", categoryTotal);
 		return "showUser";
 	}
 	
